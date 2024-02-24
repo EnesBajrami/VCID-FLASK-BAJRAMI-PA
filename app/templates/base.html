@@ -1,0 +1,73 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block scripts %}
+    {{ super() }}
+    <!-- Einbinden von jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Ihr eigenes Skript für das Drehen der Karteikarten -->
+    <script>
+        $(document).ready(function() {
+            $('.flip-card').click(function() {
+                $(this).closest('.card-container').find('.card').toggleClass('flipped');
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+
+
+
+{% block navbar %}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('index') }}">Enes Bajrami</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                <li><a href="{{ url_for('sets') }}">My Sets</a></li>
+                <li><a href="{{ url_for('public_sets') }}">Public Sets</a></li>
+                <li><a href="{{ url_for('new_set') }}">Create Set</a></li>
+                {% if user == current_user %}
+                <li><a href="{{ url_for('edit_profile') }}">Edit Profile</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_anonymous %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% else %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="list-group">
+        {% for message in messages %}
+        <li class="list-group-item list-group-item-info">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block app_content %}{% endblock %}
+</div>
+{% endblock %}

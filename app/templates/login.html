@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Sign In</h1>
+    <form action="" method="post" class="form" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div class="form-floating mb-3 custom-form-floating">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", size=32, id="floatingUsername") }}
+            {% for error in form.username.errors %}
+                <span class="error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-floating mb-3 custom-form-floating">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control", size=32, id="floatingPassword") }}
+            {% for error in form.password.errors %}
+                <span class="error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3 form-check">
+            {{ form.remember_me(class="form-check-input", id="floatingRememberMe") }}
+            {{ form.remember_me.label(class="form-check-label") }}
+        </div>
+
+        <p>{{ form.submit(class="btn btn-primary custom-submit-btn") }}</p>
+    </form>
+    <p>Neu Hier? <a href="{{ url_for('register') }}">Registrier dich jetzt!</a></p>
+{% endblock %}

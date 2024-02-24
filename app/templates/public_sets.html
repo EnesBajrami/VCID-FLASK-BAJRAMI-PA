@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Public Flashcard Sets</h1>
+    <div>
+        {% for set in sets %}
+            <div>
+                <h2>{{ set.title }}</h2>
+                <a href="{{ url_for('set_detail', set_id=set.id) }}"><button class="btn btn-primary mt-2">Zeig Set</button></a>
+            </div>
+        {% else %}
+            <p>No public sets available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

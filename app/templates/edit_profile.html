@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Edit Profile</h1>
+    <form action="" method="post" class="form">
+        {{ form.hidden_tag() }}
+
+        <div class="form-floating mb-3 custom-form-floating">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", size=32, id="floatingUsername") }}
+            {% for error in form.username.errors %}
+                <span class="error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-floating mb-3 custom-form-floating">
+            {{ form.about_me.label(class="form-label") }}
+            {{ form.about_me(class="form-control", cols=50, rows=4, id="floatingAboutMe") }}
+            {% for error in form.about_me.errors %}
+                <span class="error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <p>{{ form.submit(class="btn btn-primary custom-submit-btn") }}</p>
+    </form>
+{% endblock %}

@@ -1,0 +1,140 @@
+.card-container {
+    width: 350px; /* Beibehalten oder anpassen nach Bedarf */
+    height: auto; /* Ändert die feste Höhe in eine automatische Höhe */
+    margin: 20px;
+    perspective: 1000px;
+    float: left;
+    display: flex;
+    flex-direction: column; /* Stellt sicher, dass die Elemente vertikal angeordnet sind */
+    align-items: center; /* Zentriert die Inhalte horizontal */
+}
+
+
+.card {
+    width: 100%; /* Beibehalten oder anpassen nach Bedarf */
+    min-height: 250px; /* Setzt eine minimale Höhe */
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative; /* Beibehalten */
+    margin-bottom: 15px; /* Fügt Abstand unter der Karte hinzu */
+}
+
+.card-front, .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Optional: Fügt abgerundete Ecken hinzu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Fügt einen Schatten hinzu */
+}
+
+.card-front {
+    background-color: white; /* Hintergrundfarbe der Vorderseite */
+}
+
+.card-back {
+    background-color: #f8f9fa; /* Leicht unterschiedliche Hintergrundfarbe für die Rückseite */
+    transform: rotateY(180deg); /* Startet umgedreht */
+}
+
+.flipped {
+    transform: rotateY(180deg); /* Dreht die Karte um, wenn .flipped hinzugefügt wird */
+}
+
+/* Spezifische Stile für den 'Zeig Lösung' Button */
+.flip-card-button {
+    width: 90%; /* Oder eine andere gewünschte Breite */
+    margin-top: 10px; /* Abstand nach oben */
+    align-self: center; /* Zentriert den Button im card-container, wenn Flexbox verwendet wird */
+}
+
+/* Spezifische Stile für den 'Karteikarte löschen' Button */
+.btn-danger {
+    width: 315px; /* Oder eine andere gewünschte Breite */
+    margin-top: 10px; /* Abstand nach oben */
+    /* Kein align-self, es sei denn, Sie verwenden Flexbox und brauchen spezifische Ausrichtung */
+}
+
+/* Spezifische Stile für den 'Karteikarte löschen' Button */
+.btn-primary {
+    width: 315px; /* Oder eine andere gewünschte Breite */
+    margin-top: 10px; /* Abstand nach oben */
+    /* Kein align-self, es sei denn, Sie verwenden Flexbox und brauchen spezifische Ausrichtung */
+}
+
+/* Spezifische Stile für den 'Karteikarte löschen' Button */
+.btn-primarynew {
+    width: 315px; /* Oder eine andere gewünschte Breite */
+    margin-top: 10px; /* Abstand nach oben */
+    background-color:darkgrey;
+    color:#f8f9fa;
+    /* Kein align-self, es sei denn, Sie verwenden Flexbox und brauchen spezifische Ausrichtung */
+}
+
+/* Optional: Erhöht die Trennung zwischen den Reihen von Karten */
+.col-md-4 {
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 100%; /* Erweitert den Container, um die maximale Breite zu nutzen */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Passt die Positionierung der Karten innerhalb der Zeile an */
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 30px;
+}
+
+.fancy-header {
+    font-size: 2.5em; /* Größere Schrift */
+    color: #343a40; /* Dunkelgrau, Sie können jede Farbe wählen */
+    text-align: left; /* Zentriert den Text */
+    margin-top: 30px; /* Mehr Abstand oben */
+    margin-bottom: 30px; /* Mehr Abstand unten */
+    text-transform: uppercase; /* Macht alle Buchstaben groß */
+    letter-spacing: 3px; /* Mehr Raum zwischen den Buchstaben */
+}
+
+.btn-custom-blue {
+    background-color: #007bff; /* Bootstrap-Blau */
+}
+
+.btn-custom-red {
+    background-color: #dc3545; /* Bootstrap-Rot */
+}
+
+.btn-custom:hover {
+    opacity: 0.85; /* Leichte Transparenz beim Hover */
+}
+
+
+/* für die registeriung */
+.custom-form-floating .form-control {
+    margin-bottom: 10px; /* Benutzerdefinierter Abstand */
+    border: 1px solid #ced4da; /* Benutzerdefinierte Rahmenfarbe */
+    width: 315px; /* Oder eine andere gewünschte Breite */
+}
+
+.custom-form-floating label {
+    color: #6c757d; /* Benutzerdefinierte Label-Farbe */
+}
+
+.error-message {
+    color: red; /* Benutzerdefinierte Fehlermeldung Farbe */
+}
+
+.custom-submit-btn {
+    background-color: #007bff; /* Benutzerdefinierte Submit-Button Farbe */
+    border-color: #007bff; /* Benutzerdefinierte Submit-Button Rahmenfarbe */
+}
+
+
