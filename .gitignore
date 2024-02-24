@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -32,3 +33,39 @@ logs/
 # OS generated files
 .DS_Store
 Thumbs.db
+=======
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+myenv/
+env/
+venv/
+.venv/
+
+# Flask Migrations
+migrations/
+
+# Log files
+logs/
+*.log
+
+# Database files
+*.sqlite
+*.db
+
+# Environment variables
+.env
+
+# Folder for IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+>>>>>>> af71538736a9c08cb514987c6af20eace545be7b
