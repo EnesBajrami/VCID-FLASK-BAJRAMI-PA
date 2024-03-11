@@ -33,7 +33,7 @@ def get_users():
 
 
 # Endpunkt für User-Registrierung
-@app.route('/api/users', methods=['POST'])
+@app.route('/api/users/create', methods=['POST'])
 def create_user():
     data = request.get_json() or {}
     if 'username' not in data or 'email' not in data or 'password' not in data:
