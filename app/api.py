@@ -3,7 +3,7 @@ from app.models import Flashcard, FlashcardSet, User
 from flask import jsonify, request, url_for
 from app.errors import bad_request
 from app.models import User
-
+from app import csrf
 
 
 @app.route('/api/flashcards/<int:id>', methods=['GET'])
@@ -50,3 +50,5 @@ def create_user():
     response.status_code = 201
     response.headers['Location'] = url_for('get_user', id=user.id)
     return response
+
+csrf.exempt(create_user)

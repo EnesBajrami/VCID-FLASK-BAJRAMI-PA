@@ -94,14 +94,14 @@
     margin-bottom: 30px;
 }
 
-.fancy-header {
-    font-size: 2.5em; /* Größere Schrift */
-    color: #343a40; /* Dunkelgrau, Sie können jede Farbe wählen */
-    text-align: left; /* Zentriert den Text */
-    margin-top: 30px; /* Mehr Abstand oben */
-    margin-bottom: 30px; /* Mehr Abstand unten */
-    text-transform: uppercase; /* Macht alle Buchstaben groß */
-    letter-spacing: 3px; /* Mehr Raum zwischen den Buchstaben */
+.fancy-header, .h1, h1 { /* Passt alle h1-Elemente an, inklusive Ihrer benutzerdefinierten Klasse fancy-header */
+    font-size: 2.5rem; /* Größere Schrift */
+    margin-bottom: 1rem; /* Passender Abstand unten */
+    color: #343a40; /* Farbe des Textes, dunkelgrau */
+    text-align: center; /* Zentriert den Text */
+    margin-top: 20px; /* Abstand nach oben */
+    text-transform: uppercase; /* Großbuchstaben */
+    letter-spacing: 2px; /* Abstand zwischen Buchstaben */
 }
 
 .btn-custom-blue {
@@ -137,4 +137,36 @@
     border-color: #007bff; /* Benutzerdefinierte Submit-Button Rahmenfarbe */
 }
 
+.public-set-card {
+    width: 300px; /* Festgelegte Breite für Karteikarten */
+    margin: 20px; /* Abstand rundherum */
+    border: 1px solid #ddd; /* Leichter Rahmen */
+    border-radius: 10px; /* Abgerundete Ecken */
+    overflow: hidden; /* Verhindert das Herausragen von Inhalten */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Schatten für Tiefe */
+    transition: transform 0.3s ease; /* Glatter Übergangseffekt */
+}
 
+.public-set-card:hover {
+    transform: translateY(-5px); /* Hebt die Karte leicht an, wenn man mit der Maus darüber fährt */
+}
+
+.public-set-title {
+    font-size: 1.25rem; /* Größere Schrift für Set-Titel */
+    margin: 16px; /* Abstand */
+    text-align: center; /* Zentriert den Text */
+}
+
+.btn-show-set {
+    display: block; /* Stellt sicher, dass der Button die volle Breite einnimmt */
+    width: 100%; /* Volle Breite */
+    padding: 10px 0; /* Guter vertikaler Abstand */
+    background-color: #007bff; /* Farbe des Buttons */
+    color: white; /* Textfarbe */
+    text-transform: uppercase; /* Großbuchstaben */
+    letter-spacing: 1px; /* Abstand zwischen Buchstaben */
+}
+
+.btn-show-set:hover {
+    background-color: #0056b3; /* Dunklere Farbe beim Hover */
+}

@@ -1,22 +1,32 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <h1>Deine Karteikartensets</h1>
-    <a href="{{ url_for('new_set') }}"><button class="btn btn-primarynew mt-2">Erstelle neues Set</button></a>
-    <div>
+<div class="container mt-3">
+    <h1 style="text-align: left; margin-bottom: 2rem;">Deine Karteikartensets</h1>
+    <div style="text-align: left;">
+        <a href="{{ url_for('new_set') }}" class="btn btn-primary mt-2" style="background-color: darkgrey; color: #f8f9fa;">Erstelle neues Set</a>
+    </div>
+    <div class="row" style="margin-top: 20px;">
         {% for set in sets %}
-            <div>
-                <h2 class="fancy-header">{{ set.title }}</h2>
-                <a href="{{ url_for('set_detail', set_id=set.id) }}"><button class="btn btn-primary btn-custom-blue mt-2">Zeig Set</button></a>
-                <form action="{{ url_for('delete_set', set_id=set.id) }}" method="post">
-                    {{ form.hidden_tag() }}
-                    <input type="submit" class="btn btn-danger btn-custom-red" value="Lösch Set" onclick="return confirm('Are you sure you want to delete this set?');">
-                </form>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="fancy-header" style="font-size: 1.5rem; text-align: left;">{{ set.title }}</h2>
+                        <div style="text-align: left; margin-top: 20px;">
+                            <a href="{{ url_for('set_detail', set_id=set.id) }}" class="btn btn-primary btn-custom-blue" style="margin-top: 10px;">Set anzeigen</a>
+                            <form action="{{ url_for('delete_set', set_id=set.id) }}" method="post" style="margin-top: 10px;">
+                                {{ form.hidden_tag() }}
+                                <input type="submit" class="btn btn-danger btn-custom-red" value="Set löschen" onclick="return confirm('Möchtest du dieses Set wirklich löschen?');" style="margin-top: 10px;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         {% else %}
-            <p>No sets available.</p>
+            <div class="col">
+                <p style="text-align: left;">Keine Sets verfügbar.</p>
+            </div>
         {% endfor %}
     </div>
+</div>
 {% endblock %}
-
-

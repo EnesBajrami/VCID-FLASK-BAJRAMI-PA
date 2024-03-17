@@ -1,38 +1,44 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <div class="container mt-3">
-        <h1>{{ set.title }}</h1>
+<div class="container mt-3">
+    <h1>{{ set.title }}</h1>
+    {% if current_user.id == set.user_id %} <!-- Prüfen, ob der aktuelle Benutzer der Ersteller des Sets ist -->
         <div class="d-flex justify-content-between mb-4">
             <h2>Karteikarten:</h2>
             <a href="{{ url_for('new_flashcard', set_id=set.id) }}" class="btn btn-success">Neue Karteikarte erstellen</a>
         </div>
-        {% if set.flashcards %}
-            <div class="row">
-                {% for flashcard in set.flashcards %}
-                    <div class="col-md-4 mb-4">
-                        <div class="card-container">
-                            <div class="card flip-card">
-                                <div class="card-front card-body d-flex align-items-center justify-content-center bg-white">
-                                    <p class="card-text text-center">{{ flashcard.question }}</p>
-                                </div>
-                                <div class="card-back card-body d-flex align-items-center justify-content-center bg-light">
-                                    <p class="card-text text-center">{{ flashcard.answer }}</p>
-                                </div>
+    {% else %}
+        <h2>Karteikarten:</h2>
+    {% endif %}
+    {% if set.flashcards %}
+        <div class="row">
+            {% for flashcard in set.flashcards %}
+                <div class="col-md-4 mb-4">
+                    <div class="card-container">
+                        <div class="card flip-card">
+                            <div class="card-front card-body d-flex align-items-center justify-content-center bg-white">
+                                <p class="card-text text-center">{{ flashcard.question }}</p>
                             </div>
-                            <button class="btn btn-primary mt-2 flip-card-button">Zeig Lösung</button>
+                            <div class="card-back card-body d-flex align-items-center justify-content-center bg-light">
+                                <p class="card-text text-center">{{ flashcard.answer }}</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary mt-2 flip-card-button">Zeig Lösung</button>
+                        {% if current_user.id == set.user_id %} <!-- Nur dem Ersteller des Sets erlauben, Karteikarten zu löschen -->
                             <form action="{{ url_for('delete_flashcard', card_id=flashcard.id) }}" method="post" class="mt-2">
                                 {{ form.hidden_tag() }}
                                 <input type="submit" class="btn btn-danger" value="Karteikarte löschen" onclick="return confirm('Sind Sie sicher, dass Sie diese Karteikarte löschen möchten?');">
                             </form>
-                        </div>
+                        {% endif %}
                     </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p>Es wurden noch keine Karteikarten hinzugefügt.</p>
-        {% endif %}
-    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Es wurden noch keine Karteikarten hinzugefügt.</p>
+    {% endif %}
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -45,10 +51,3 @@
         });
     </script>
 {% endblock %}
-
-
-
-
-
-
-
