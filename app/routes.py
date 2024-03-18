@@ -122,6 +122,7 @@ def new_set():
 
 # Liste aller öffentlichen Sets
 @app.route('/public_sets')
+@login_required
 def public_sets():
     sets = FlashcardSet.query.filter_by(public=True).all()
     return render_template('public_sets.html', sets=sets)

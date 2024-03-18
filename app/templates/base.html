@@ -37,7 +37,9 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="{{ url_for('index') }}">Home</a></li>
+                {% if not current_user.is_anonymous %}
                 <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                {% endif %}
                 <li><a href="{{ url_for('sets') }}">My Sets</a></li>
                 <li><a href="{{ url_for('public_sets') }}">Public Sets</a></li>
                 <li><a href="{{ url_for('new_set') }}">Create Set</a></li>
