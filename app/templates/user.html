@@ -1,16 +1,26 @@
 {% extends "base.html" %}
+
 {% block app_content %}
+    <!-- Inhalt des Benutzerprofilbereichs -->
     <table>
         <tr valign="top">
+            <!-- Zelle für das Benutzeravatar -->
             <td><img src="{{ user.avatar(128) }}"></td>
+            <!-- Zelle für Benutzerinformationen -->
             <td>
+                <!-- Benutzername -->
                 <h1>User: {{ user.username }}</h1>
-                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                <!-- Über mich Beschreibung (falls vorhanden) -->
+                {% if user.about_me %}
+                    <p>{{ user.about_me }}</p>
+                {% endif %}
+                <!-- Link zum Profil bearbeiten (nur wenn es der aktuelle Benutzer ist) -->
                 {% if user == current_user %}
-                <p><a href="{{ url_for('edit_profile') }}">Edit Profile</a></p>
+                    <p><a href="{{ url_for('edit_profile') }}">Edit Profile</a></p>
                 {% endif %}
             </td>    
         </tr>
     </table>
+    <!-- Horizontale Trennlinie -->
     <hr>
 {% endblock %}

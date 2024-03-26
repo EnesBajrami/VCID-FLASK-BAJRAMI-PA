@@ -1,31 +1,42 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+<!-- Container für den Inhalt der Seite -->
 <div class="container mt-3">
+    <!-- Titel des Karteikartensets -->
     <h1>{{ set.title }}</h1>
-    {% if current_user.id == set.user_id %} <!-- Prüfen, ob der aktuelle Benutzer der Ersteller des Sets ist -->
+    <!-- Wenn der aktuelle Benutzer der Ersteller des Sets ist -->
+    {% if current_user.id == set.user_id %}
+        <!-- Optionen für den Ersteller des Sets (Neue Karteikarte erstellen) -->
         <div class="d-flex justify-content-between mb-4">
             <h2>Karteikarten:</h2>
             <a href="{{ url_for('new_flashcard', set_id=set.id) }}" class="btn btn-success">Neue Karteikarte erstellen</a>
         </div>
     {% else %}
+        <!-- Nur die Überschrift für die Karteikarten anzeigen -->
         <h2>Karteikarten:</h2>
     {% endif %}
+    <!-- Wenn Karteikarten im Set vorhanden sind -->
     {% if set.flashcards %}
         <div class="row">
+            <!-- Schleife durch die Karteikarten im Set -->
             {% for flashcard in set.flashcards %}
                 <div class="col-md-4 mb-4">
                     <div class="card-container">
                         <div class="card flip-card">
+                            <!-- Vorderseite der Karteikarte -->
                             <div class="card-front card-body d-flex align-items-center justify-content-center bg-white">
                                 <p class="card-text text-center">{{ flashcard.question }}</p>
                             </div>
+                            <!-- Rückseite der Karteikarte -->
                             <div class="card-back card-body d-flex align-items-center justify-content-center bg-light">
                                 <p class="card-text text-center">{{ flashcard.answer }}</p>
                             </div>
                         </div>
+                        <!-- Button zum Umdrehen der Karteikarte -->
                         <button class="btn btn-primary mt-2 flip-card-button">Zeig Lösung</button>
-                        {% if current_user.id == set.user_id %} <!-- Nur dem Ersteller des Sets erlauben, Karteikarten zu löschen -->
+                        <!-- Formular zum Löschen der Karteikarte (nur für den Ersteller des Sets) -->
+                        {% if current_user.id == set.user_id %}
                             <form action="{{ url_for('delete_flashcard', card_id=flashcard.id) }}" method="post" class="mt-2">
                                 {{ form.hidden_tag() }}
                                 <input type="submit" class="btn btn-danger" value="Karteikarte löschen" onclick="return confirm('Sind Sie sicher, dass Sie diese Karteikarte löschen möchten?');">
@@ -35,6 +46,7 @@
                 </div>
             {% endfor %}
         </div>
+    <!-- Wenn keine Karteikarten im Set vorhanden sind -->
     {% else %}
         <p>Es wurden noch keine Karteikarten hinzugefügt.</p>
     {% endif %}
@@ -42,6 +54,7 @@
 {% endblock %}
 
 {% block scripts %}
+    <!-- JavaScript für das Umdrehen der Karteikarten -->
     {{ super() }}
     <script>
         $(document).ready(function() {

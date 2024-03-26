@@ -8,6 +8,7 @@
     <script>
         $(document).ready(function() {
             $('.flip-card').click(function() {
+                // Beim Klick auf eine Karteikarte das drehen der Karteikarte auslösen
                 $(this).closest('.card-container').find('.card').toggleClass('flipped');
             });
         });
@@ -16,25 +17,26 @@
 
 {% block head %}
     {{ super() }}
+    <!-- Einbindung Ihrer eigenen CSS-Datei -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
-
-
-
 
 {% block navbar %}
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
+            <!-- Toggle-Schaltfläche für mobile Ansicht -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <!-- Branding-Link -->
             <a class="navbar-brand" href="{{ url_for('index') }}">Enes Bajrami</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+            <!-- Navigationslinks -->
             <ul class="nav navbar-nav">
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 {% if not current_user.is_anonymous %}
@@ -47,6 +49,7 @@
                 <li><a href="{{ url_for('edit_profile') }}">Edit Profile</a></li>
                 {% endif %}
             </ul>
+            <!-- Anmelden-/Abmelden-Links -->
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_anonymous %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
@@ -61,6 +64,7 @@
 
 {% block content %}
 <div class="container">
+    <!-- Benachrichtigungen -->
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul class="list-group">
@@ -70,6 +74,7 @@
     </ul>
     {% endif %}
     {% endwith %}
+    <!-- Anwendungsinhalt -->
     {% block app_content %}{% endblock %}
 </div>
 {% endblock %}

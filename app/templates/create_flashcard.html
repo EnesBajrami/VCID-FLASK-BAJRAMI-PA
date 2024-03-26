@@ -1,25 +1,33 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+    <!-- Überschrift für das Formular zur Erstellung neuer Karteikarten -->
     <h1>Erstelle neue Karteikarten</h1>
+    <!-- Formular zur Erstellung neuer Karteikarten -->
     <form action="" method="post" class="form">
         {{ form.hidden_tag() }}
+
+        <!-- Feld für die Frage der Karteikarte -->
         <div class="form-floating mb-3 custom-form-floating">
             {{ form.question.label(class="form-label") }}
             {{ form.question(class="form-control", size=32, id="floatingQuestion") }}
             {% for error in form.question.errors %}
+                <!-- Fehlermeldungen für das Fragefeld -->
                 <span class="error-message">[{{ error }}]</span>
             {% endfor %}
         </div>
+
+        <!-- Feld für die Antwort der Karteikarte -->
         <div class="form-floating mb-3 custom-form-floating">
             {{ form.answer.label(class="form-label") }}
             {{ form.answer(class="form-control", size=32, id="floatingAnswer") }}
             {% for error in form.answer.errors %}
+                <!-- Fehlermeldungen für das Antwortfeld -->
                 <span class="error-message">[{{ error }}]</span>
             {% endfor %}
         </div>
+
+        <!-- Submit-Button für das Formular -->
         <p>{{ form.submit(class="btn btn-primary custom-submit-btn") }}</p>
     </form>
 {% endblock %}
-
-

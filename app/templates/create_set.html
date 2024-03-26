@@ -1,25 +1,29 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+    <!-- Überschrift für das Formular zur Erstellung eines neuen Karteikartensets -->
     <h1 style="text-align: left;">Erstelle ein neues Karteikartenset</h1>
+    <!-- Formular zur Erstellung eines neuen Karteikartensets -->
     <form action="" method="post" class="form">
         {{ form.hidden_tag() }}
 
+        <!-- Feld für den Titel des Karteikartensets -->
         <div class="form-floating mb-3 custom-form-floating">
             {{ form.title.label(class="form-label") }}
             {{ form.title(class="form-control", size=32) }}
             {% for error in form.title.errors %}
+                <!-- Fehlermeldungen für das Titelfeld -->
                 <span class="error-message">[{{ error }}]</span>
             {% endfor %}
         </div>
 
+        <!-- Checkbox für die Sichtbarkeit des Karteikartensets -->
         <div class="mb-3 form-check">
             {{ form.public(class="form-check-input") }}
             {{ form.public.label(class="form-check-label") }}
         </div>
 
+        <!-- Submit-Button für das Formular -->
         <p>{{ form.submit(class="btn btn-primary custom-submit-btn") }}</p>
     </form>
 {% endblock %}
-
- 

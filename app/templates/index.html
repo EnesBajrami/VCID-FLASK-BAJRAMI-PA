@@ -1,22 +1,29 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+    <!-- Überschrift mit dem Namen des aktuellen Benutzers -->
     <h1>Willkommen, {{ current_user.username }}!</h1>
+    <!-- Container für den Hauptinhalt der Seite -->
     <div class="container mt-5">
+        <!-- Einleitungstext -->
         <p class="lead">Entdecke die Welt des Lernens mit unseren Karteikarten!</p>
         <p>Hier auf unserer Plattform kannst du effektiv und strukturiert lernen, indem du eigene Karteikartensets erstellst und bearbeitest. Nutze die Karteikarten, um Wissen zu verschiedenen Themen zu sammeln und zu wiederholen.</p>
         
+        <!-- Zwei Spalten für die Hauptfunktionen der Seite -->
         <div class="row mt-4">
+            <!-- Erstelle neue Sets -->
             <div class="col-md-6">
                 <h2>Erstelle neue Sets</h2>
                 <p>Beginne damit, deine eigenen Karteikartensets zu erstellen. Füge Themen hinzu, die dich interessieren, und personalisiere deine Lernerfahrung.</p>
                 <a href="{{ url_for('new_set') }}" class="btn btn-primary">Neues Set erstellen</a>
             </div>
             
+            <!-- Entdecke und lerne -->
             <div class="col-md-6">
                 <h2>Entdecke und lerne</h2>
                 <p>Durchstöbere die öffentlich geteilten Sets unserer Community. Lerne neue Perspektiven kennen und erweitere dein Wissen durch die Vielfalt der geteilten Inhalte.</p>
                 <a href="{{ url_for('public_sets') }}" class="btn btn-primary">Öffentliche Sets durchstöbern</a>
             </div>
         </div>
+    <!-- Ende des Hauptinhaltsblocks -->
 {% endblock %}

@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+    <!-- Überschrift für das Anmeldeformular -->
     <h1 style="text-align: left;">Anmelden</h1>
+    <!-- Formular für die Anmeldung -->
     <form action="" method="post" class="form" novalidate>
         {{ form.hidden_tag() }}
 
+        <!-- Benutzername-Eingabefeld -->
         <div class="form-floating mb-3 custom-form-floating">
             {{ form.username.label(class="form-label") }}
             {{ form.username(class="form-control", size=32, id="floatingUsername") }}
@@ -13,6 +16,7 @@
             {% endfor %}
         </div>
 
+        <!-- Passwort-Eingabefeld -->
         <div class="form-floating mb-3 custom-form-floating">
             {{ form.password.label(class="form-label") }}
             {{ form.password(class="form-control", size=32, id="floatingPassword") }}
@@ -21,12 +25,15 @@
             {% endfor %}
         </div>
 
+        <!-- "Remember Me" Checkbox -->
         <div class="mb-3 form-check">
             {{ form.remember_me(class="form-check-input", id="floatingRememberMe") }}
             {{ form.remember_me.label(class="form-check-label") }}
         </div>
 
+        <!-- Submit-Button -->
         <p>{{ form.submit(class="btn btn-primary custom-submit-btn") }}</p>
     </form>
+    <!-- Link zur Registrierungsseite -->
     <p>Neu Hier? <a href="{{ url_for('register') }}">Registrier dich jetzt!</a></p>
 {% endblock %}

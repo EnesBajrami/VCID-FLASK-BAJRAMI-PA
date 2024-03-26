@@ -1,19 +1,28 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+<!-- Container für den Inhalt der Seite -->
 <div class="container mt-3">
+    <!-- Überschrift für die Seite -->
     <h1 style="text-align: left; margin-bottom: 2rem;">Meine Karteikartensets</h1>
+    <!-- Link zum Erstellen eines neuen Sets -->
     <div style="text-align: left;">
         <a href="{{ url_for('new_set') }}" class="btn btn-primary mt-2" style="background-color: darkgrey; color: #f8f9fa;">Erstelle neues Set</a>
     </div>
+    <!-- Bereich für die Anzeige der vorhandenen Sets -->
     <div class="row" style="margin-top: 20px;">
         {% for set in sets %}
+            <!-- Kartenansicht für jedes Set -->
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
+                        <!-- Titel des Sets -->
                         <h2 class="fancy-header" style="font-size: 1.5rem; text-align: left;">{{ set.title }}</h2>
+                        <!-- Optionen für das Set (Anzeigen und Löschen) -->
                         <div style="text-align: left; margin-top: 20px;">
+                            <!-- Link zum Anzeigen des Sets -->
                             <a href="{{ url_for('set_detail', set_id=set.id) }}" class="btn btn-primary btn-custom-blue" style="margin-top: 10px;">Set anzeigen</a>
+                            <!-- Formular zum Löschen des Sets -->
                             <form action="{{ url_for('delete_set', set_id=set.id) }}" method="post" style="margin-top: 10px;">
                                 {{ form.hidden_tag() }}
                                 <input type="submit" class="btn btn-danger btn-custom-red" value="Set löschen" onclick="return confirm('Möchtest du dieses Set wirklich löschen?');" style="margin-top: 10px;">
@@ -23,6 +32,7 @@
                 </div>
             </div>
         {% else %}
+            <!-- Anzeige, wenn keine Sets verfügbar sind -->
             <div class="col">
                 <p style="text-align: left;">Keine Sets verfügbar.</p>
             </div>
